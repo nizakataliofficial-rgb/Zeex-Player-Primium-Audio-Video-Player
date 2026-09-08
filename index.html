@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeeX Web Player | Audio & Video Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-brands fa-ZeeX"></i>
+                <span>ZeeX</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active" id="home-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#" id="search-link"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+                <a href="#" id="library-link"><i class="fa-solid fa-book"></i> Your Library</a>
+            </nav>
+            <div class="playlist-section">
+                <h4>PLAYLISTS</h4>
+                <ul id="playlist-list">
+                    <li id="liked-playlist"><i class="fa-solid fa-heart"></i> Liked Songs</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div>
+                    <div class="mode-switch" role="tablist" aria-label="Media player type">
+                        <button class="mode-tab active" id="audio-mode" data-mode="audio" role="tab" aria-selected="true">
+                            <i class="fa-solid fa-music"></i> Audio Player
+                        </button>
+                        <button class="mode-tab" id="video-mode" data-mode="video" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-video"></i> Video Player
+                        </button>
+                    </div>
+                    <h2 id="view-title">Audio Player</h2>
+                    <p class="view-subtitle" id="view-subtitle">Scan your device to listen to local audio.</p>
+                </div>
+                <div class="user-action">
+                    <label for="audio-folder-scan" class="upload-btn media-upload audio-upload">
+                        <i class="fa-solid fa-folder-open"></i> Scan Audio Folder
+                    </label>
+                    <input type="file" id="audio-folder-scan" accept="audio/*" webkitdirectory directory multiple hidden>
+                    <label for="video-folder-scan" class="upload-btn media-upload video-upload" hidden>
+                        <i class="fa-solid fa-folder-open"></i> Scan Video Folder
+                    </label>
+                    <input type="file" id="video-folder-scan" accept="video/*" webkitdirectory directory multiple hidden>
+                    <label for="audio-file-scan" class="upload-btn secondary media-upload audio-upload">
+                        <i class="fa-solid fa-file-audio"></i> Select Audio
+                    </label>
+                    <input type="file" id="audio-file-scan" accept="audio/*" multiple hidden>
+                    <label for="video-file-scan" class="upload-btn secondary media-upload video-upload" hidden>
+                        <i class="fa-solid fa-file-video"></i> Select Video
+                    </label>
+                    <input type="file" id="video-file-scan" accept="video/*" multiple hidden>
+                </div>
+            </header>
+            <div class="search-panel" id="search-panel" hidden>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="search-input" type="search" placeholder="Search your local media..." autocomplete="off">
+            </div>
+            <div class="video-container" id="video-container" hidden>
+                <video id="video-player" controls playsinline></video>
+            </div>
+            <!-- Song Cards Grid -->
+            <div class="songs-grid" id="songs-container">
+                <!-- Songs JS se render honge -->
+            </div>
+
+            <!-- Audio Visualizer Canvas -->
+            <div class="visualizer-container">
+                <h3>Audio Spectrum</h3>
+                <canvas id="visualizer"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Player Bar -->
+    <footer class="player-bar">
+        <!-- Currently Playing Song Info -->
+        <div class="now-playing">
+            <img src="https://via.placeholder.com/60" id="current-cover" alt="Cover">
+            <div class="track-details">
+                <h4 id="current-title">Select a Song</h4>
+                <p id="current-artist">Artist Name</p>
+            </div>
+            <i class="fa-regular fa-heart" id="like-btn"></i>
+        </div>
+
+        <!-- Player Controls -->
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button id="shuffle" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+                <button id="prev"><i class="fa-solid fa-backward-step"></i></button>
+                <button id="play-pause" class="play-main"><i class="fa-solid fa-play"></i></button>
+                <button id="next"><i class="fa-solid fa-forward-step"></i></button>
+                <button id="repeat" title="Repeat: off"><i class="fa-solid fa-repeat"></i></button>
+            </div>
+            <div class="progress-bar-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="seek-bar" value="0" min="0" max="100">
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+
+        <!-- Volume Controls -->
+        <div class="volume-controls">
+            <i class="fa-solid fa-volume-high" id="volume-icon"></i>
+            <input type="range" id="volume-bar" value="100" min="0" max="100">
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
