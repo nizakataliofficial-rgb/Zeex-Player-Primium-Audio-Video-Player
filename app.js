@@ -185,11 +185,11 @@ function handleScannedFiles(files) {
     const scannedTracks = mediaFiles.map((file, index) => ({
         id: Date.now() + index,
         name: file.name,
-        title: file.name.replace(/\.[^/.]+$/, ""), // Extension remove karein
+        title: file.name.replace(/\.[^/.]+$/, ""),
         artist: file.webkitRelativePath ? file.webkitRelativePath.split('/')[0] : "Local Device",
         cover: "https://picsum.photos/id/101/300/300",
         type: file.type,
-        src: URL.createObjectURL(file) // Dynamic file stream URL
+        src: URL.createObjectURL(file) 
     }));
 
     songsList.unshift(...scannedTracks);

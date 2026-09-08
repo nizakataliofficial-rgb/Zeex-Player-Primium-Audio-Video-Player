@@ -1,6 +1,3 @@
-/* ==========================================
-   1. GLOBAL RESET & VARIABLES
-   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -23,22 +20,21 @@
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
-    overflow: hidden; /* Prevents double scrolling */
+    overflow: hidden; 
     user-select: none;
 }
 
-/* ==========================================
-   2. MAIN LAYOUT CONTAINER
-   ========================================== */
+
+   /* 2. MAIN LAYOUT CONTAINER */
+   
 .container {
     display: grid;
     grid-template-columns: 240px 1fr;
     height: calc(100vh - var(--player-height));
 }
 
-/* ==========================================
-   3. SIDEBAR (DESKTOP)
-   ========================================== */
+   /* 3. SIDEBAR (DESKTOP) */
+
 .sidebar {
     background-color: var(--bg-sidebar);
     padding: 24px;
@@ -112,9 +108,8 @@ body {
     color: var(--text-white);
 }
 
-/* ==========================================
-   4. MAIN CONTENT AREA
-   ========================================== */
+   /* 4. MAIN CONTENT AREA */
+
 .main-content {
     background: linear-gradient(145deg, #172742 0%, var(--bg-dark) 58%);
     padding: 24px;
@@ -242,9 +237,8 @@ body {
     background-color: transparent;
 }
 
-/* ==========================================
-   5. BOTTOM PLAYER BAR
-   ========================================== */
+   /* 5. BOTTOM PLAYER BAR */
+
 .player-bar {
     height: var(--player-height);
     background-color: #070a13;
@@ -413,21 +407,20 @@ input[type="range"]:hover::-webkit-slider-thumb {
     width: 100px;
 }
 
-/* ==========================================
-   6. RESPONSIVE DESIGN (MOBILE & TABLET)
-   ========================================== */
+   /* 6. RESPONSIVE DESIGN (MOBILE & TABLET) */
+
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: 1fr; /* Sidebar chhup jayega */
+        grid-template-columns: 1fr; 
     }
 
     .sidebar {
-        display: none; /* Mobile par sidebar hide kar rahe hain */
+        display: none; 
     }
 
     .main-content {
         padding: 16px;
-        padding-bottom: 100px; /* Space for player bar */
+        padding-bottom: 100px;
     }
 
     .top-bar {
@@ -469,7 +462,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
     }
 
     .volume-controls {
-        display: none; /* Mobile par volume buttons phone hardware se adjust hote hain */
+        display: none; 
     }
 
     .player-controls {
@@ -477,7 +470,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
     }
 
     .progress-bar-container {
-        display: none; /* Mobile slider ko clean rakhne ke liye progress bar skip kiya */
+        display: none;
     }
 
     .control-buttons {
@@ -486,7 +479,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
     .control-buttons #shuffle,
     .control-buttons #repeat {
-        display: none; /* Small screens par core buttons rakhein */
+        display: none;
     }
 }
 
