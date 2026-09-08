@@ -21,6 +21,7 @@ const likedSongIds = new Set();
 let currentSongIndex = -1;
 let mediaElement = new Audio();
 const videoExtensions = /\.(mp4|webm|ogv|mov|m4v)$/i;
+const audioExtensions = /\.(mp3|wav|ogg|m4a|aac|flac|opus)$/i;
 let currentView = "home";
 let activeMediaType = "audio";
 let isShuffleOn = false;
@@ -135,7 +136,15 @@ function updateProgress() {
 }
 
 function playAudio() {
-    mediaElement.play();
+    const playAttempt = mediaElement.play();
+    if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.then(() => {
+            playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }).catch(() => {
+            playPauseButton.innerHTML = '<i class="fa-solid fa-play"></i>';
+        });
+        return;
+    }
     playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
 }
 
@@ -171,11 +180,11 @@ function playNext() {
 }
 
 function handleScannedFiles(files) {
-    const mediaFiles = Array.from(files).filter(file =>
-        activeMediaType === "video"
-            ? file.type.startsWith("video/") || videoExtensions.test(file.name)
-            : file.type.startsWith("audio/")
-    );
+    const mediaFiles = Array.from(files).filter(file => {
+        const fileIsVideo = file.type.startsWith("video/") || videoExtensions.test(file.name);
+        const fileIsAudio = file.type.startsWith("audio/") || audioExtensions.test(file.name);
+        return activeMediaType === "video" ? fileIsVideo : fileIsAudio;
+    });
 
     if (mediaFiles.length === 0) {
         alert("Koi audio ya video file nahi mili!");
@@ -200,7 +209,11 @@ function handleScannedFiles(files) {
 }
 
 function scanInputFiles(event) {
+    const inputMediaType = event.target.dataset.mediaType;
+    const previousMediaType = activeMediaType;
+    activeMediaType = inputMediaType;
     handleScannedFiles(event.target.files);
+    activeMediaType = previousMediaType;
     event.target.value = "";
 }
 

@@ -51,19 +51,19 @@
                     <label for="audio-folder-scan" class="upload-btn media-upload audio-upload">
                         <i class="fa-solid fa-folder-open"></i> Scan Audio Folder
                     </label>
-                    <input type="file" id="audio-folder-scan" accept="audio/*" webkitdirectory directory multiple hidden>
+                    <input type="file" id="audio-folder-scan" data-media-type="audio" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" webkitdirectory directory multiple hidden>
                     <label for="video-folder-scan" class="upload-btn media-upload video-upload" hidden>
                         <i class="fa-solid fa-folder-open"></i> Scan Video Folder
                     </label>
-                    <input type="file" id="video-folder-scan" accept="video/*" webkitdirectory directory multiple hidden>
+                    <input type="file" id="video-folder-scan" data-media-type="video" accept="video/*,.mp4,.webm,.ogv,.mov,.m4v" webkitdirectory directory multiple hidden>
                     <label for="audio-file-scan" class="upload-btn secondary media-upload audio-upload">
                         <i class="fa-solid fa-file-audio"></i> Select Audio
                     </label>
-                    <input type="file" id="audio-file-scan" accept="audio/*" multiple hidden>
+                    <input type="file" id="audio-file-scan" data-media-type="audio" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" multiple hidden>
                     <label for="video-file-scan" class="upload-btn secondary media-upload video-upload" hidden>
                         <i class="fa-solid fa-file-video"></i> Select Video
                     </label>
-                    <input type="file" id="video-file-scan" accept="video/*" multiple hidden>
+                    <input type="file" id="video-file-scan" data-media-type="video" accept="video/*,.mp4,.webm,.ogv,.mov,.m4v" multiple hidden>
                 </div>
             </header>
             <div class="search-panel" id="search-panel" hidden>
